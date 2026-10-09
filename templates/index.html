@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Spam Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;   /* Dark background */
+            color: #e0e0e0;        /* Light text */
+            text-align: center;
+            padding: 50px;
+        }
+        h2 { 
+            margin-bottom: 20px; 
+            color: #ffcc00;        /* Gold accent */
+        }
+        textarea {
+            width: 70%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background: #1e1e1e;
+            color: #e0e0e0;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: #121212;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #e6b800; }
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .spam { color: #ff4d4d; }   /* Bright red for spam */
+        .ham { color: #4dff88; }    /* Bright green for ham */
+    </style>
+</head>
+<body>
+    <h2>📧 Email Spam Classifier</h2>
+    <form method="POST">
+        <textarea name="email_text" rows="6" placeholder="Paste your email here..."></textarea><br><br>
+        <button type="submit">Check</button>
+    </form>
+    {% if result %}
+    <div class="result {{ css_class }}">
+        Result: {{ result }} <br>
+        Confidence → Spam: {{ spam_conf }}% | Ham: {{ ham_conf }}%
+    </div>
+    {% endif %}
+</body>
+</html>
